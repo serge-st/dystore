@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className='links'>
         <div className="logo">
           <svg width="81" height="36" viewBox="0 0 81 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g clip-path="url(#clip0_0_105)">
+          <g clipPath="url(#clip0_0_105)">
           <path d="M7.451 25.1792L0 17.7282L7.451 10.2772L9.22061 12.0468L3.50818 17.7593L9.18956 23.4407L7.451 25.1792Z" fill="#264653"/>
           <path d="M71.7794 23.6815L73.549 25.4511L81 18.0001L73.549 10.5491L71.8105 12.2877L77.4919 17.9691L71.7794 23.6815Z" fill="#264653"/>
           <path d="M66.8121 12.0628L61.4928 24.4811H59.3611L64.6804 12.0628H66.8121Z" fill="#2A9D8F"/>

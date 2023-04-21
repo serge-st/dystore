@@ -1,7 +1,9 @@
+import GridList from "../../components/GridList/GridList";
+
 const MainPage = () => {
     return (
         <div>
-            MAIN PAGE
+            <GridList />
         </div>
     );
 };

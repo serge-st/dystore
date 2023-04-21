@@ -1,0 +1,51 @@
+.gridItem {
+    border-radius: 15px;
+    width: 400px;
+    height: auto;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position:relative;
+}
+
+.gridItemTitle {
+    text-align: left;
+    text-transform: capitalize;
+    margin:14px 0px;
+    padding-right:2px;
+    font-weight: 600;
+
+}
+
+.gridItemPrice {
+    font-size:14px;
+}
+
+.gridItemBottom {
+    display: flex;
+}
+
+.gridButton {
+    background-color:#2A9D8F;
+    min-width: 100px;
+    border:none;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color:#fff;
+    position: absolute;
+    right: 0px;
+    bottom: -10px;
+    font-weight: 600;
+    transition: 0.2s all ease;
+}
+
+.gridButton:hover {
+    background-color:transparent;
+    color:#2A9D8F;
+    border: 1px solid #2A9D8F;
+    cursor: pointer;
+}

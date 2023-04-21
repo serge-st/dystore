@@ -1,22 +1,19 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './App.css';
 import {useLazyGetProductsQuery} from './services/productsApi'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { setProducts } from './store/productsSlice';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { setProducts, setLoading } from './store/productsSlice';
 import { useEffect } from 'react';
 import MainPage from './pages/Main/MainPage';
 import AboutPage from './pages/About/AboutPage';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader'
 import GridList from './components/GridList/GridList';
-
-
+import ProductPage from './pages/Product/ProductPage';
 
 function App() {
-  console.log('APP render', Math.random())
   const dispatch = useDispatch();
   const [callApi, { data, error, isLoading }] = useLazyGetProductsQuery()
-
 
   useEffect(() => {
     if (!data) {
@@ -29,20 +26,25 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
+  useEffect(() => {
+    dispatch(setLoading(isLoading));
+  }, [isLoading, dispatch])
+
   return (
     <div className="App">
       <Router>
         <Navbar />
         <Routes>
-          <Route  path='/' element={<MainPage />}/>
-          <Route  path='/about' element={<AboutPage />}/>
+          <Route path='/' element={<MainPage />}/>
+          <Route path='/about' element={<AboutPage />}/>
+          <Route path='/products/:id' element={<ProductPage />} />
+          <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       </Router>
-
       {
         isLoading
           ? <Loader />
-          : <GridList />
+          : null
       }
     </div>
   );

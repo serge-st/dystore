@@ -1,0 +1,13 @@
+.gridTitle {
+    margin-top:100px;
+    text-align:center;
+    font-size:40px;
+}
+
+.gridList {
+    width:100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    place-items: flex-start;
+}
