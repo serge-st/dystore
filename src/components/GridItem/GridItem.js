@@ -1,3 +1,4 @@
+
 import './GridItem.css';
 import { Link } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ const GridItem = ({data}) => {
                 <div className="gridItemPrice">
                     ${data.id * 9.99}
                 </div>
-                <button className="gridButton">Buy Now</button>
+                <button className="gridButton" >Buy Now</button>
             </div> 
         </div>
     );
