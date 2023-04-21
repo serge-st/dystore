@@ -8,6 +8,7 @@ import MainPage from './pages/Main/MainPage';
 import AboutPage from './pages/About/AboutPage';
 import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader'
+import GridList from './components/GridList/GridList';
 
 
 
@@ -15,6 +16,7 @@ function App() {
   console.log('APP render', Math.random())
   const dispatch = useDispatch();
   const [callApi, { data, error, isLoading }] = useLazyGetProductsQuery()
+
 
   useEffect(() => {
     if (!data) {
@@ -40,7 +42,7 @@ function App() {
       {
         isLoading
           ? <Loader />
-          : null
+          : <GridList />
       }
     </div>
   );
