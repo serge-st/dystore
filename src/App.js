@@ -10,6 +10,7 @@ import Navbar from './components/Navbar/Navbar';
 import Loader from './components/Loader/Loader'
 import GridList from './components/GridList/GridList';
 import ProductPage from './pages/Product/ProductPage';
+import CartPage from './pages/CartPage/CartPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
           <Route path='/' element={<MainPage />}/>
           <Route path='/about' element={<AboutPage />}/>
           <Route path='/products/:id' element={<ProductPage />} />
+          <Route path='/cart' element={<CartPage />} />
           <Route path='*' element={<Navigate to="/" />} />
         </Routes>
       </Router>

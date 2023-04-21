@@ -7,6 +7,10 @@
     gap: 80px
 }
 
+.product-title {
+    text-transform: uppercase;
+}
+
 .product-description {
     text-align: left;
     display: flex;
@@ -17,10 +21,29 @@
 
 .product-quantity {
     width: 50px;
+    font-size: 14px;
+    border: 1px solid black;
+    outline: none;
 }
 
-.add-to-cart-btn {
-    width: 100px;
+.button {
+    background-color:#2A9D8F;
+    width: 160px;
+    border:none;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color:#fff;
+    font-weight: 600;
+    transition: 0.2s all ease;
+}
+
+.button:hover {
+    background-color:transparent;
+    color:#2A9D8F;
+    border: 1px solid #2A9D8F;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 426px) {

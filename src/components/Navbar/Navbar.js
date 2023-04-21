@@ -26,7 +26,7 @@ const Navbar = () => {
         <Link to='/'>Main</Link>
         <Link to='/about'>About</Link>
         <div className='minicart'>
-          <MiniCart />
+          <Link to='/cart'>Cart Icon Should Be Here</Link>
         </div>
         
       </div>

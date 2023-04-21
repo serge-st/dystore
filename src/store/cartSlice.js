@@ -12,9 +12,12 @@ export const cartSlice = createSlice({
         state.items.push(action.payload)
       },
       removeProduct: (state, action) => {
-        // state.items.splice(index, 1)
+        const index = state.items.findIndex(object => {
+          return object.id === action.payload;
+        });
+        state.items.splice(index, 1)
       }
     },
 })
 
-export const { addProduct } = cartSlice.actions
+export const { addProduct, removeProduct } = cartSlice.actions

@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import './ProductPage.css'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addProduct } from '../../store/cartSlice';
 
 const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         setQuantity(e.target.value)
@@ -14,6 +16,10 @@ const ProductPage = () => {
     const data  = useSelector(state => state.products)
     const {isLoading} = data
     const [currentProduct] = data.products.filter(product => product.id === Number(id))
+
+    const handleClick = () => {
+        dispatch(addProduct({currentProduct, quantity}))
+    }
 
     if (currentProduct && !isLoading) {
         const { title, body } = currentProduct;
@@ -27,9 +33,9 @@ const ProductPage = () => {
                     <div className="product-price">{`$${price}`}</div>
                     <p className="product-description">{body}</p>
 
-                    <label>Quantity</label>
-                    <input value={quantity} onChange={handleChange} className='product-quantity' type='number' />
-                    <button className='add-to-cart-btn' type="button">Add To Cart</button>
+                    <label>Quantity:</label>
+                    <input min={1} value={quantity} onChange={handleChange} className='product-quantity' type='number' />
+                    <button className='button' type="button" onClick={handleClick}>Add To Cart</button>
                 </div>
             </div>
         );
