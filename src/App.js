@@ -1,38 +1,47 @@
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
-import { useLazyGetProductsQuery } from './services/productsApi'
+import {useLazyGetProductsQuery} from './services/productsApi'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { setProducts } from './store/productsSlice';
 import { useEffect } from 'react';
+import MainPage from './pages/Main/MainPage';
+import AboutPage from './pages/About/AboutPage';
+import Navbar from './components/Navbar/Navbar';
+import Loader from './components/Loader/Loader'
+
+
 
 function App() {
-  const state = useSelector(store => store);
+  console.log('APP render', Math.random())
   const dispatch = useDispatch();
-
-  console.log(JSON.stringify(state))
-
-  // !! testing, remove after
-  // const handleClick = () => {
-  //   dispatch(setProducts(1))
-  // }
-
   const [callApi, { data, error, isLoading }] = useLazyGetProductsQuery()
 
-  console.log('data ===>', JSON.stringify(data))
-
-  const handleClick = async () => { 
-      const result = await callApi();
-      dispatch(setProducts(result.data))
-  }
-
   useEffect(() => {
-
-  })
-
+    if (!data) {
+      const getData = async () => { 
+        const result = await callApi();
+        dispatch(setProducts(result.data))
+      }
+      getData()
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   return (
     <div className="App">
-      {/* !! testing, remove after */}
-      <button type="button" onClick={handleClick}>add</button>
-      App page
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route  path='/' element={<MainPage />}/>
+          <Route  path='/about' element={<AboutPage />}/>
+        </Routes>
+      </Router>
+
+      {
+        isLoading
+          ? <Loader />
+          : null
+      }
     </div>
   );
 }
