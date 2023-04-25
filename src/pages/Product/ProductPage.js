@@ -3,8 +3,10 @@ import './ProductPage.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addProduct } from '../../store/cartSlice';
+import useRecContext from '../../hooks/useRecContext';
 
 const ProductPage = () => {
+    useRecContext('PRODUCT')
     const [quantity, setQuantity] = useState(1);
     const dispatch = useDispatch()
 
